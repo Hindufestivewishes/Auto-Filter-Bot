@@ -111,24 +111,3 @@ SHORTLINK = is_enabled('SHORTLINK', False)
 
 PAYMENT_QR = environ.get('PAYMENT_QR', 'http://graph.org/file/cacbbea472e5a48ce0d64.jpg') #telegraph link of your QR code , make from @professormp_bot
 
-# for stream
-IS_STREAM = is_enabled('IS_STREAM', True) #true if you want stream feature active in your bot
-BIN_CHANNEL = environ.get("BIN_CHANNEL", "") #if is_stream = true then add a channel id ex: -10026393639
-if len(BIN_CHANNEL) == 0:
-    print('Error - BIN_CHANNEL is missing, exiting now')
-    exit()
-else:
-    BIN_CHANNEL = int(BIN_CHANNEL)
-URL = environ.get("URL", "") #if heroku then paste the app link here ex: https://heroku......./
-if len(URL) == 0:
-    print('Error - URL is missing, exiting now')
-    exit()
-else:
-    if URL.startswith(('https://', 'http://')):
-        if not URL.endswith("/"):
-            URL += '/'
-    elif is_valid_ip(URL):
-        URL = f'http://{URL}/'
-    else:
-        print('Error - URL is not valid, exiting now')
-        exit()
